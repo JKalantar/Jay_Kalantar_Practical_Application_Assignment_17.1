@@ -3,7 +3,7 @@ Submit the website URL to my public-facing GitHub repository for my third practi
 
 
 # Objective:   
-### To predict whether a client will subscribe to a term deposit based on the data provided.
+### To predict whether a client will subscribe to a term deposit based on the data provided and provide recommendations on the best classification model and feature importance.
 
 # Data Understanding:
 ### The dataset contained 21 column. 11 Numeric and the rest are categorical:
@@ -86,7 +86,7 @@ SVC|0.921|0.908|0.91|0.91|0.9|0.91|0.9|101|20|kernel=rbf
 
 
 
-## Next steps and recommendations:
+## Conclusions:
 
 1) The data is highly imbalance, so using precision and recall is the better measure of the model performance.  I used F1-Score which is the mean of precision and recall
 2) The seven feature model resulted in much lower precsion and recall than utilizing all features model (precision 0.76 vs 0.91)
@@ -96,4 +96,12 @@ SVC|0.921|0.908|0.91|0.91|0.9|0.91|0.9|101|20|kernel=rbf
 6) Both KNN and SVM do NOTnot provide feature importance readily making them less useful for drawing inferences
 7) I tried 4 different types of imputing (including KNN) they all had very little to no effect since the Nan values are only 7% of the total and don't really drive anything.
 8) I also tried removing some features again, no impact on the final outcome.
-9) Perhaps, we can segment the data by education or job to identify customers with higher offer acceptance.
+
+
+## Next steps and recommendations:
+Use the following finding to segment the data target identify customers with higher offer acceptance:
+   1) The low volumn months like March seems to work better than high volume months
+   2) Engaging the prospect with higher **duration** calls
+   3) Followup on previous marketing campaign **poutcome** and improve the yield
+   4) Some **job** and **education** classifications can provide higher yields
+   5) High unemployement **emp.var.rate** reduces the conversion rate
