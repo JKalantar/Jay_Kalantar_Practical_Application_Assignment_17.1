@@ -88,11 +88,10 @@ SVC|0.921|0.908|0.91|0.91|0.9|0.91|0.9|101|20|kernel=rbf
 
 ## Next steps and recommendations:
 
-1) The data is highly imbalance, so using precision and recall is the better measure of the model performance.
-2) I used F1-Score in the mean of precision and recall
-3) The seven feature model resulted in much lower precsion and recall than utilizing all features (0.76 vs 0.91)
-4) Both Logistic Regression and Decision Tree provided the best fits and good performance in both seven and full feature models
-5) The Feature Importance from the Logistic Regression better fit the feature comparisons
-6) Both KNN and SVM performed slow without any imporvement on the model performance
-7) Both KNN and SVM do not provide feature importance readily making them less useful for drawing inferences
-8) Perhaps, we can segment the data by education or job to identify customers with higher offer acceptance 
+1) The data is highly imbalance, so using precision and recall is the better measure of the model performance.  I used F1-Score which is the mean of precision and recall
+2) The seven feature model resulted in much lower precsion and recall than utilizing all features model (precision 0.76 vs 0.91)
+3) Both Logistic Regression and Decision Tree provided the best fits and good performance in both seven and full feature models
+4) The Feature Importance from the Logistic Regression better fit the manual feature examinations
+5) Both KNN and SVM performed much slower without any imporvement on the model performance
+6) Both KNN and SVM do NOTnot provide feature importance readily making them less useful for drawing inferences
+7) Perhaps, we can segment the data by education or job to identify customers with higher offer acceptance.
