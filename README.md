@@ -49,7 +49,7 @@ Submit the website URL to my public-facing GitHub repository for my third practi
 	housing            2.40%
 	loan               2.40%
 	
-	### 
+
 # Data Preparation:
 1) Replaced unknown with NaN values
 2) One-Hot encode all object features
