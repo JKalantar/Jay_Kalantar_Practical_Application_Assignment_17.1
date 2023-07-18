@@ -94,4 +94,6 @@ SVC|0.921|0.908|0.91|0.91|0.9|0.91|0.9|101|20|kernel=rbf
 4) The Feature Importance from the Logistic Regression better fit the manual feature examinations
 5) Both KNN and SVM performed much slower without any imporvement on the model performance
 6) Both KNN and SVM do NOTnot provide feature importance readily making them less useful for drawing inferences
-7) Perhaps, we can segment the data by education or job to identify customers with higher offer acceptance.
+7) I tried 4 different types of imputing (including KNN) they all had very little to no effect since the Nan values are only 7% of the total and don't really drive anything.
+8) I also tried removing some features again, no impact on the final outcome.
+9) Perhaps, we can segment the data by education or job to identify customers with higher offer acceptance.
