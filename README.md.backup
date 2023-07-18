@@ -1,0 +1,116 @@
+# Jay-Kalantar-Practical-Application-Assignment-17.1
+Submit the website URL to my public-facing GitHub repository for my third practical assignment.
+
+
+# Objective:   
+### To predict whether a client will subscribe to a term deposit based on the data provided.
+
+# Data Understanding:
+### The dataset contained 21 column. 11 Numeric and the rest are categorical:
+1. Data is imbalanced with 88.7% of the data being 'no' and 11.3% being 'yes'. 
+2. There are null values in the dataset listed as 'unknown'. 
+3. The data is categorical and will need to be encoded for modeling.
+
+
+### Non-numeric Data:
+Input variables:
+# bank client data:
+1) age (numeric)
+2) job : type of job (categorical: 'admin.','blue-collar','entrepreneur','housemaid','management','retired','self-employed','services','student','technician','unemployed','unknown')
+3 - marital : marital status (categorical: 'divorced','married','single','unknown'; note: 'divorced' means divorced or widowed)
+4 - education (categorical: 'basic.4y','basic.6y','basic.9y','high.school','illiterate','professional.course','university.degree','unknown')
+5 - default: has credit in default? (categorical: 'no','yes','unknown')
+6 - housing: has housing loan? (categorical: 'no','yes','unknown')
+7 - loan: has personal loan? (categorical: 'no','yes','unknown')
+# related with the last contact of the current campaign:
+8 - contact: contact communication type (categorical: 'cellular','telephone')
+9 - month: last contact month of year (categorical: 'jan', 'feb', 'mar', ..., 'nov', 'dec')
+10 - day_of_week: last contact day of the week (categorical: 'mon','tue','wed','thu','fri')
+11 - duration: last contact duration, in seconds (numeric). Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.
+# other attributes:
+12 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
+13 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric; 999 means client was not previously contacted)
+14 - previous: number of contacts performed before this campaign and for this client (numeric)
+15 - poutcome: outcome of the previous marketing campaign (categorical: 'failure','nonexistent','success')
+# social and economic context attributes
+16 - emp.var.rate: employment variation rate - quarterly indicator (numeric)
+17 - cons.price.idx: consumer price index - monthly indicator (numeric)
+18 - cons.conf.idx: consumer confidence index - monthly indicator (numeric)
+19 - euribor3m: euribor 3 month rate - daily indicator (numeric)
+20 - nr.employed: number of employees - quarterly indicator (numeric)
+
+Output variable (desired target):
+21 - y - has the client subscribed a term deposit? (binary: 'yes','no')
+
+### I found many missing values specifically the following features:
+	
+	Feature		%Missing Data
+	size            	72%
+	cylinders       	42%
+	condition       	41%
+	VIN             	38%
+	drive           	31%
+	paint_color     	31%
+	type            	22%
+	
+### After removing outlier data and imputing the missing values, I was able to retain **66%** of data for the modeling.
+
+
+# Summary of the Findings
+
+## Modeling observations:  
+
+1. <mark style="background-color: lightyellow">The Linear Regression model performs well in the $15K and $90K price range</mark>
+2. Simple Regression Modeling was able to produce a good model with score: **0.795** and Test MAPE: **0.0279**
+
+3. Below $15K the model tend t over-predict the prices
+
+4. Above $90K the model tend t under-predict the prices
+
+5. Manufacturing brands and car types have the most impact on the price
+6. States have very little impact on the price
+7. Type, Condition, fuel and title status all have impacts but less than manufactured.
+8. Size and transmission have very little impact on pricing
+
+
+## Examined the price categories and see if there is a relationship between the price and the other features.
+
+### I created three price categories based on the price quantiles: 
+* _Low Price_ : Less than $17K
+* _Med Price_: Between $17K and $29K
+* _High Price_:More than $29K 
+* 
+
+
+_Low Price_ 
+* Tend to have Odometer between 90 to 170K
+* Tend to have built between 2006 to 2013
+* Mostly sedan, SUV, and truck built between 2000 to 2010 with odometer between 100,000 to 200,000 miles and manufactured by Ford, Chevrolet, Toyota, Honda, and Nissan
+*  Best Selling Models:  Ford F-150, Ford Escape, Toyota Camery, Honda Accord, Nissan Ultima, ... 
+
+_Med Price_ 
+* Tend to have Odometer between 40 to 100K
+* Tend to have built between 2014 to 2017
+* Mostly trucks, sedans, SUVs built between 2014 to 2017 with odometer less than 70K miles and manufactured by Ford, Chevrolet, ram, gmc, and Toyota
+* Best Selling Models: Ford F-150, Chevrolet Siverado, Jeep Wrangler, Toyota Tacoma, Jeep Gran Cherokee
+
+
+_High Price_ 
+* Tend to have Odometer less than 70K
+* Tend to have built between 2015 to 2019
+* Mostly trucks, SUVs built between 2015 to 2019 with odometer between 40 to 100K miles and manufactured by Ford, Chevrolet, Toyota, Jeep, and Ram.
+* Best Selling Models: Ford F-150, Chevrolet Siverado (all models), Ford F-250, Ford F-350
+
+
+## Next steps and recommendations:
+
+We can use the developed model to predict the used car prices and determine the impact of various independent features on the used car prices.  Based on my analysis I can provide the following recommendations to a used car dealership:
+
+1.  We developed a robust Linear Regression model that can accurately predict the car prices between $15K to $90K price range
+2.  Certain car brands can fetch higher prices (Ferrari, Tesla, Persche, Lexuss, ...) vs brands that fetch lower process (fiat, mercury, saturn, mitsubishi, ...)
+3.  Trucks and SUVs are more popular in the mid to high price categories.  Sedans are more popular in the low price category
+4.  Trucks from Ford and Chevrolet are sold the most and should be a big part of your inventory
+5.  In general, cars in high price categories generate much higher sales volumes
+6.  Further clean up of the missing or mistyped Type and Model data could provide a larger dataset and allows predictions against specific model
+7.  Provide recommendation on the top 10 models for each price category after the type and model cleanups 
+
